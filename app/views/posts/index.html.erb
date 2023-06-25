@@ -4,6 +4,11 @@
 </h2>
 <ul>
     <% @posts.each do |post| %>
-    <li><%=post.title %></li>
+    <li><%=post.title %>
+    <%= link_to '[Edit]', edit_post_path(post), class: 'command' %>
+    <div class = "commandibutton">
+        <%= button_to 'Delete', post_path(post), method: :delete %>
+    </div>
+    </li>
     <% end %>
 </ul>
