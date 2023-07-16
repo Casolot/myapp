@@ -16,6 +16,9 @@
     <% @posts.each do |post|%>
         <li class="list-group-item">
 </ul>
+<div>
+    <%= render 'signin' %>
+</div>
 <li class="list-group-item dflex justify-content-between">
     <div>
         <%= link_to post.title, post_path(post)%>
