@@ -1,35 +1,37 @@
-<div class= "d-flex justify-content-between">
-    <h2>My post</h2>
-    <%= button_to t(' .add_new'), new_post_path, method: :get, class: 'btn btn-sm btn-primary'%>
-</div>
-<ul>
-    <% @posts.each do |post| %>
-    <li><%=post.title %>
-    <%= link_to '[Edit]', edit_post_path(post), class: 'command' %>
-    <div class = "commandibutton">
-        <%= button_to 'Delete', post_path(post), method: :delete %>
-    </div>
-    </li>
-    <% end %>
-</ul>
-<ul class= "list-group mt-2">
-    <% @posts.each do |post|%>
-        <li class="list-group-item">
-</ul>
 <div>
     <%= render 'signin' %>
 </div>
-<li class="list-group-item dflex justify-content-between">
-    <div>
-        <%= link_to post.title, post_path(post)%>
-    </div>
-    <div class="dropdown">
-        <<button class-"btn btn-sm btnlink dropdown-toggle p-0" data-bs-toggle="dropdown">
-        </button>
-        <div class="dropdown-menu">
-            <%=link_to t('.edit'), edit_post_path(post), class: 'dropdown-item' %>
-            <%= button_to t('.delete'), post_path(post), method: :delete, class: 'dropdown-item' %>
-        </div>
-    </div>
-</li>
-<% end %>
+<div class="d-flex justify-content-between">
+    <h2>My Posts</h2>
+    <% if current_user %>
+        <%= button_to t('.add_new'), new_post_path, method: :get, class: 'btn btn-sm btn-primary' %>
+    <% end %>
+</div>
+<ul class="list-group mt-2">
+    <% @posts.each do |post| %>
+
+        <li class="list-group-item d-flex justify-content-between">
+            <div>
+                <%= link_to post.title, post_path(post) %>
+                <% if post.comments.any? %>
+                    <span class="badge bg-primary rounded-pill"><%= post.comments.size %></span>
+                <% end %>
+                <br />
+                <span class='text-secondary'>
+                    <%= l(post.created_at, format: :long) %>
+                </span>
+            </div>
+            <% if current_user && current_user.id == post.user_id %>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-link dropdown-toggle p-0" data-bs-toggle="dropdown" >
+                </button>
+                <div class="dropdown-menu">
+                    <%= link_to t('.edit'), edit_post_path(post), class: 'dropdown-item' %>
+                    <%= button_to t('.delete'), post_path(post), method: :delete, class: 'dropdown-item' %>
+                </div>
+            </div>
+            <% end %>
+        </li>
+
+    <% end %>
+</ul>

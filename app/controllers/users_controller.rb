@@ -1,13 +1,14 @@
-class PostsController < ApplicationController
+class UsersController < ApplicationController
     def new
-        @user = USer.new
-    end 
+        @user = User.new
+    end
+
     def create
-        @user = User.new(post_params)
+        @user = User.new(user_params)
         if @user.save
             redirect_to posts_path
         else
-            render "new", status: :unprocessable_entity
+            render 'new', status: :unprocessable_entity
         end
     end
 

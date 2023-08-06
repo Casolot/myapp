@@ -75,3 +75,4 @@ group :test do
 end
 gem 'bootstrap', '5.2.0'
 gem 'http_accept_language'
+gem 'pundit'

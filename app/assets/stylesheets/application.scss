@@ -22,9 +22,17 @@
 h2 {
     font-size: 16px;
 }
+.container {
+    width: 400px;
+    margin: 20px auto;
+}
 h3{
     font-size: 14px;
     padding-top: 25px;
+}
+.logo {
+    width: 400px;
+    height: 50px;
 }
 input[type = "text"], textarea{
     box-sizing: border-box;
@@ -38,12 +46,19 @@ textarea{
     color: red;
     font-weight: bold;
 }
-.command {
-    font-size: 12px;
-}
-.command-button {
-    display:inline-block;
-}
+//.command {
+//    font-size: 12px;
+//}
+//.command-button {
+//    display:inline-block;
+//}
 a.btn:visited {
     color: #fff;
+}
+.signin-form input[type='text'] {
+    margin-right: 4px;
+    width: 120px;
+}
+.signin-form {
+    margin-bottom: 4px;
 }
